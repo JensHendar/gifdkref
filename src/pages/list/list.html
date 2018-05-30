@@ -4,20 +4,26 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>List</ion-title>
+    
+    <ion-buttons end>
+      <button class="toggle-matches-button" ion-button (click)="userMatches = !userMatches">
+        {{(userMatches) ? 'Dina' : 'Alla'}}
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
+    <button ion-item *ngFor="let match of matches" (click)="matchTapped($event, match)">
+      <ion-icon [name]="(match.refType != 'HD') ? 'flag' : 'body' " item-start></ion-icon>
+      {{match.teams[0]}} – {{match.teams[1]}}
       <div class="item-note" item-end>
-        {{item.note}}
+        {{match.time}}
       </div>
     </button>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
+  <div *ngIf="selectedMatch" padding>
+    You navigated here from <b>{{selectedMatch.teams[0]}} – {{selectedMatch.teams[1]}}</b>
   </div>
 </ion-content>

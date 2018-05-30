@@ -1,37 +1,53 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { MatchdetailsPage } from '../matchdetails/matchdetails';
+
+import { Match } from '../../models/match'
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
-
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
+  selectedMatch: any
+  icons: string[]
+  matches: Array<Match> = [
+    {
+      matchId: "1",
+      refType: "AD1",
+      teams: [
+        "IFK Göteborg",
+        "BK Häcken"
+      ],
+      time: "27 juni, 12:00",
+      matchTime: "2x30",
+      matchType: "B15, gruppspel",
+      pitch: "Grimbo 1"
+    },
+    {
+      matchId: "2",
+      refType: "HD",
+      teams: [
+        "Helgingborg",
+        "Real Madrid"
+      ],
+      time: "27 juni, 16:00",
+      matchTime: "2x25",
+      matchType: "F14, gruppspel",
+      pitch: "Grimbo 2"
     }
+  ]
+  userMatches: boolean = false
+
+  constructor(public navCtrl: NavController) {
+    // If we navigated to this page, we will have an item available as a nav param
+    
   }
 
-  itemTapped(event, item) {
+  matchTapped(event, match) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
+    this.navCtrl.push(MatchdetailsPage, {
+      match: match
     });
   }
 }

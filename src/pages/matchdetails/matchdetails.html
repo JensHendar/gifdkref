@@ -1,0 +1,23 @@
+<<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{match.teams[0]}} – {{match.teams[1]}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+
+
+<ion-content padding>
+  <p>
+    {{match.matchId}}<br />
+    {{match.refType}}<br />
+    {{match.teams}}<br />
+    {{match.time}}<br />
+    {{match.matchTime}}<br />
+    {{match.matchType}}<br />
+    {{match.pitch}}<br />
+  </p>
+
+</ion-content>
