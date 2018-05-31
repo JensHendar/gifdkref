@@ -11,10 +11,12 @@ import { Match } from '../../models/match'
 export class ListPage {
   selectedMatch: any
   icons: string[]
-  matches: Array<Match> = [
+  refId: string = '12345'
+  matchesList: Array<Match> = [
     {
       matchId: "1",
       refType: "AD1",
+      refId: "12345",
       teams: [
         "IFK Göteborg",
         "BK Häcken"
@@ -27,6 +29,7 @@ export class ListPage {
     {
       matchId: "2",
       refType: "HD",
+      refId: "67890",
       teams: [
         "Helgingborg",
         "Real Madrid"
@@ -37,15 +40,16 @@ export class ListPage {
       pitch: "Grimbo 2"
     }
   ]
+  userMatchesList: Array<Match> = this.matchesList.filter(m => m.refId === this.refId)
   userMatches: boolean = false
 
-  constructor(public navCtrl: NavController) {
-    // If we navigated to this page, we will have an item available as a nav param
-    
+  constructor(
+    public navCtrl: NavController
+  ){ 
+    console.log(this.userMatchesList);
   }
 
   matchTapped(event, match) {
-    // That's right, we're pushing to ourselves!
     this.navCtrl.push(MatchdetailsPage, {
       match: match
     });
