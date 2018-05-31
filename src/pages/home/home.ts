@@ -1,65 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { NewsProvider } from '../../providers/news/news';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  private news = [
-    {
-      title: "News item 1",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    },
-    {
-      title: "News item 2",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    },
-    {
-      title: "News item 1",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    },
-    {
-      title: "News item 2",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    },
-    {
-      title: "News item 1",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    },
-    {
-      title: "News item 2",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    },
-    {
-      title: "News item 1",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    },
-    {
-      title: "News item 2",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    },
-    {
-      title: "News item 1",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    },
-    {
-      title: "News item 2",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    },
-    {
-      title: "News item 1",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    },
-    {
-      title: "News item 2",
-      text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. "
-    }
-  ]
+  private news;
 
-  constructor(public navCtrl: NavController) {
-    console.log(this.news)
+  constructor(
+    public navCtrl: NavController,
+    private newsProvider: NewsProvider
+  ) {
+    
+  }
+
+  ngOnInit() {
+    this.newsProvider.getAllNews().subscribe((data) => {
+      this.news = data;
+    })
   }
 
 }

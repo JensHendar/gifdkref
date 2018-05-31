@@ -12,6 +12,7 @@ import { MatchdetailsPage } from '../pages/matchdetails/matchdetails';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MatchesProvider } from '../providers/matches/matches';
+import { NewsProvider } from '../providers/news/news';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatchesProvider } from '../providers/matches/matches';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MatchesProvider
+    MatchesProvider,
+    NewsProvider
   ]
 })
 export class AppModule {}

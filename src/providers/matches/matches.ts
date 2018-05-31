@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map'
+
 import { Match } from '../../models/match'
+import { conf } from '../../config'
 
 @Injectable()
 export class MatchesProvider {
@@ -35,8 +38,18 @@ export class MatchesProvider {
   ]
   public userMatchesList: Array<Match> = this.matchesList.filter(m => m.refId === this.refId)
 
-  constructor(public http: HttpClient) {
+  private api_url: string = conf.api_url;
 
+  constructor(public http: HttpClient) {
+    this.getAllMatches();
+  }
+
+  public getAllMatches() {
+    this.http.get(this.api_url + "/posts")
+      .subscribe(data => {
+        //console.log(data);
+        //this.matchesList = data;
+      });
   }
 
 }
