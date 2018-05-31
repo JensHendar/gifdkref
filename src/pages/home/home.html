@@ -9,4 +9,18 @@
 
 <ion-content padding>
   
+  <p>Välkommen till Grimbo!</p>
+  <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. </p>
+  
+  <h4>Senaste</h4>
+  <hr>
+  <ion-card *ngFor="let n of news">
+    <ion-card-header>
+      {{n.title}}
+    </ion-card-header>
+    <ion-card-content>
+      {{n.text}}
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

@@ -45,9 +45,7 @@ export class ListPage {
 
   constructor(
     public navCtrl: NavController
-  ){ 
-    console.log(this.userMatchesList);
-  }
+  ){ }
 
   matchTapped(event, match) {
     this.navCtrl.push(MatchdetailsPage, {
